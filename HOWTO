@@ -1,0 +1,30 @@
+$ cat /etc/debian_version 
+9.0
+
+$ python --version
+Python 2.7.13
+
+# grep pubsub -A3 /etc/prosody/conf.d/myserver.cfg.lua 
+	Component "pubsub.myserver" "pubsub"
+		autocreate_on_publish = true
+		autocreate_on_subscribe = true
+    -- don't forget dns record
+
+# apt-get install python git-core python-pip
+# pip install feedparser jsonpickle sleekxmpp termcolor
+
+# mkdir -p /opt/atomtopubsub && chown myuser:mygroup /opt/atomtopubsub
+$ cd /opt && git clone https://github.com/edhelas/atomtopubsub.git && cd atompubsub
+$ nano config_default.py                                                     # edit for your xmpp service
+$ cp config_default.py config.py                                             # or write with editor
+$ python atomtopubsub.py 
+  File "atomtopubsub.py", line 28
+    async def parse(parsed, xmpp):
+            ^
+SyntaxError: invalid syntax
+
+# apt-get install python3-pip
+# easy_install3 -U pip
+# python3.5 -m pip install  feedparser jsonpickle sleekxmpp termcolor slixmpp config
+
+$ python3.5 atomtopubsub.py
