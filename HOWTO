@@ -8,23 +8,40 @@ Python 2.7.13
 	Component "pubsub.myserver" "pubsub"
 		autocreate_on_publish = true
 		autocreate_on_subscribe = true
-    -- don't forget dns record
-
+    	-- don't forget dns record
+# su
 # apt-get install python git-core python-pip
 # pip install feedparser jsonpickle sleekxmpp termcolor
-
 # mkdir -p /opt/atomtopubsub && chown myuser:mygroup /opt/atomtopubsub
+# exit
 $ cd /opt && git clone https://github.com/edhelas/atomtopubsub.git && cd atompubsub
-$ nano config_default.py                                                     # edit for your xmpp service
-$ cp config_default.py config.py                                             # or write with editor
+$ cp config_default.py config.py                                             # or write new name with editor
+$ nano config.py
+$ sed -r '/^(( +)?#)/d ; s/(.*)#(.*)/\1/' config.py 
+
+feeds = {
+        'LinuxFr' : {                                                  
+            'url' : 'https://linuxfr.org/news.atom',    
+            'server' : 'pubsub.myserver'                                    
+            },
+    }
+
+
+
+jid         = 'rss@myserver'  
+resource    = 'atomtopubsub'     
+secret      = 'MySuP3rP@ssWordMaDn€sS'         
+
+refresh_time = 60
+
 $ python atomtopubsub.py 
   File "atomtopubsub.py", line 28
     async def parse(parsed, xmpp):
             ^
 SyntaxError: invalid syntax
-
+# su
 # apt-get install python3-pip
 # easy_install3 -U pip
-# python3.5 -m pip install  feedparser jsonpickle sleekxmpp termcolor slixmpp config
-
+# python3.5 -m pip install feedparser jsonpickle sleekxmpp termcolor slixmpp config
+# exit
 $ python3.5 atomtopubsub.py
