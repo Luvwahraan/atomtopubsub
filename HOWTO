@@ -41,7 +41,7 @@ $ python atomtopubsub.py
 SyntaxError: invalid syntax
 # su
 # apt-get install python3-pip
-# easy_install3 -U pip
+(# easy_install3 -U pip)
 # python3.5 -m pip install feedparser jsonpickle sleekxmpp termcolor slixmpp config
 # exit
 $ python3.5 atomtopubsub.py
